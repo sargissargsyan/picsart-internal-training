@@ -20,10 +20,12 @@ public abstract class BasePage {
     public abstract String getUrl();
 
     public void open(String url) {
+        System.out.println("Opening url -> " + url);
         driver.get(url);
     }
 
     public WebElement find(By location) {
+        System.out.println("Finding element -> " + location.toString());
         return driver.findElement(location);
     }
 
@@ -32,10 +34,12 @@ public abstract class BasePage {
     }
 
     public void type(WebElement element, String text) {
+        System.out.println("Typing " + text +" to field  -> " + element.toString());
         element.sendKeys(text);
     }
 
     public void click(By location) {
+        System.out.println("Clicking on element -> " + location.toString());
         click(find(location));
     }
 
