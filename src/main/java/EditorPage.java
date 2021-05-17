@@ -24,21 +24,18 @@ public class EditorPage extends BasePage {
     }
 
     public int getItemsCount() {
-        new WebDriverWait(driver, 5)
-            .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(editorItemLocation));
+        WaitHelper.getInstance().waitForElementToBeDisplayed(editorItemLocation);
         return findAll(editorItemLocation).size();
 
     }
 
     public void clickInstagramStory() {
-        new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(instagramStoryLocation));
+        WaitHelper.getInstance().waitForElementToBeDisplayed(instagramStoryLocation);
         Actions actions = new Actions(driver);
         actions.moveToElement(find(instagramStoryLocation)).click().build().perform();
     }
     public void clickFitIcon() {
-        new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(fitIconLocation));
+        WaitHelper.getInstance().waitForElementToBeDisplayed(fitIconLocation);
         click(fitIconLocation);
     }
 }
