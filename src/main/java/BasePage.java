@@ -3,6 +3,9 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static setup.DriverSetup.getDriver;
 
 /**
@@ -28,6 +31,10 @@ public abstract class BasePage {
         System.out.println("Finding element -> " + location.toString());
         return driver.findElement(location);
     }
+    public List<WebElement> findAll(By location) {
+        System.out.println("Finding elements -> " + location.toString());
+        return driver.findElements(location);
+    }
 
     public void type(By location, String text) {
         type(find(location), text);
@@ -46,6 +53,12 @@ public abstract class BasePage {
     public void click(WebElement element) {
         element.click();
     }
+
+    public void changeTab(int tabIndex) {
+        List<String> windowHandlers = new ArrayList<>(getDriver().getWindowHandles());
+        getDriver().switchTo().window(windowHandlers.get(tabIndex));
+    }
+
 
     public boolean isDisplayed(WebElement element) {
         try {
