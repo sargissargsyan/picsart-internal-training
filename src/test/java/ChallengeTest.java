@@ -7,7 +7,7 @@ import static org.testng.Assert.assertTrue;
  * @author Sargis Sargsyan on 5/20/21
  * @project picsart-internal-training
  */
-public class ChallengeTest {
+public class ChallengeTest extends TestBase {
 
     @Test
     public void qrTest(){

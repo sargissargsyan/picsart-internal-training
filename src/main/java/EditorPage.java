@@ -20,7 +20,7 @@ public class EditorPage extends BasePage {
 
     @Override
     public String getUrl() {
-        return BASE_URL + "/create";
+        return BASE_URL + "/create/editor";
     }
 
     public int getItemsCount() {
