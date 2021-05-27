@@ -29,7 +29,8 @@ public class LikeTest {
     public void like() throws IOException {
         JsonObject image = ApiHelper.uploadPhoto(key);
         ApiHelper.likePhoto(key, image.get("id").getAsString());
-        new ImageBrowserPage(image.get("id").getAsString());
+        ImageBrowserPage imageBrowserPage = new ImageBrowserPage(image.get("id").getAsString());
+        imageBrowserPage.clickLike();
     }
 
 

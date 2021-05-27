@@ -1,4 +1,7 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+
+import static setup.DriverSetup.getDriver;
 
 /**
  * @author Sargis Sargsyan on 5/24/21
@@ -27,5 +30,9 @@ public class ImageBrowserPage extends BasePage {
 
     public boolean isImageLiked() {
         return find(likeIconLocation).getAttribute("class").contains("active");
+    }
+
+    public void clickLike() {
+        ((JavascriptExecutor)getDriver()).executeScript("arguments[0].click();", find(likeIconLocation));
     }
 }

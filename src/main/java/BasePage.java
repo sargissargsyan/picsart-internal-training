@@ -14,7 +14,11 @@ import static setup.DriverSetup.getDriver;
  */
 public abstract class BasePage {
     protected WebDriver driver;
-    public static final String BASE_URL="http://picsart.com";
+    public static String BASE_URL;
+    {
+        String url = System.getProperty("selenium.url", "http://picsart.com");
+
+    }
 
     public BasePage() {
         this.driver = getDriver();
