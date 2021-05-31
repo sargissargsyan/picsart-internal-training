@@ -18,7 +18,7 @@ public abstract class BasePage {
     protected WebDriver driver;
     public static String BASE_URL;
     {
-        String url = System.getProperty("selenium.url", "http://picsart.com");
+        BASE_URL = System.getProperty("selenium.url", "http://picsart.com");
 
     }
 

@@ -57,7 +57,10 @@ public class TheFirstTest {
         EditorPage editorPage = new EditorPage();
         editorPage.clickInstagramStory();
         editorPage.changeTab(1);
+        editorPage = editorPage.init();
         editorPage.clickFitIcon();
+        editorPage = editorPage.init();
+
         assertEquals(editorPage.getItemsCount(), 28, "Items count in editor was not correct!");
 
     }

@@ -28,6 +28,17 @@ public class WaitHelper {
                     + location.toString() );
         }
     }
+
+    public WaitHelper waitForElementToBeDisplayed(WebElement element) {
+        try {
+            new WebDriverWait(getDriver(), DEFAULT_TIMEOUT)
+                    .until(ExpectedConditions.visibilityOf(element));
+            return this;
+        } catch (WebDriverException e) {
+            throw new Error ("Element with provided locator was not displayed "
+                    + element.toString() );
+        }
+    }
     public WaitHelper waitForElementToBeInvisible(WebElement element) {
         try {
             new WebDriverWait(getDriver(), DEFAULT_TIMEOUT)

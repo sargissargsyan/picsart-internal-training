@@ -1,7 +1,12 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
+
+import static setup.DriverSetup.getDriver;
 
 /**
  * @author Sargis Sargsyan on 5/17/21
@@ -9,33 +14,45 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public class EditorPage extends BasePage {
 
-    private static By instagramStoryLocation = By.cssSelector("[data-test='insta-story']");
-    private static By editorItemLocation = By.cssSelector("[class*='customSizeContainer']");
-    private static By fitIconLocation = By.cssSelector("#background-category");
+    @FindBy(css = "[data-test='insta-story']")
+    private WebElement instagramStory;
+
+    @FindBy(css = "[class*='customSizeContainer']")
+    private List<WebElement> editorItems;
+
+    @FindBy(id = "background-category")
+    private WebElement fitIconItem;
 
 
     public EditorPage() {
         open(getUrl());
+        PageFactory.initElements(getDriver(), this);
+    }
+
+    public EditorPage init() {
+        PageFactory.initElements(getDriver(), this);
+        return this;
     }
 
     @Override
     public String getUrl() {
-        return BASE_URL + "/create/editor";
+        return BASE_URL + "/create";
     }
 
     public int getItemsCount() {
-        WaitHelper.getInstance().waitForElementToBeDisplayed(editorItemLocation);
-        return findAll(editorItemLocation).size();
+//        WaitHelper.getInstance().waitForElementToBeDisplayed(editorItems.get(0));
+        return editorItems.size();
 
     }
 
     public void clickInstagramStory() {
-        WaitHelper.getInstance().waitForElementToBeDisplayed(instagramStoryLocation);
+//        WaitHelper.getInstance().waitForElementToBeDisplayed(instagramStory);
         Actions actions = new Actions(driver);
-        actions.moveToElement(find(instagramStoryLocation)).click().build().perform();
+        actions.moveToElement(instagramStory).click().build().perform();
     }
+
     public void clickFitIcon() {
-        WaitHelper.getInstance().waitForElementToBeDisplayed(fitIconLocation);
-        click(fitIconLocation);
+        WaitHelper.getInstance().waitForElementToBeDisplayed(fitIconItem);
+        click(fitIconItem);
     }
 }
