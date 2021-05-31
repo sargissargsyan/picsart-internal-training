@@ -12,6 +12,42 @@
         <maven.compiler.source>12</maven.compiler.source>
         <maven.compiler.target>12</maven.compiler.target>
     </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.github.webdriverextensions</groupId>
+                <artifactId>webdriverextensions-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>install-drivers</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <installationDirectory>src/test/resources</installationDirectory>
+                    <drivers>
+                        <driver>
+                            <name>chromedriver</name>
+                            <platform>mac</platform>
+                            <bit>64</bit>
+                            <customFileName>chromedriver</customFileName>
+                            <version>90.0.4430.24</version>
+                        </driver>
+                        <driver>
+                            <name>geckodriver</name>
+                            <platform>mac</platform>
+                            <bit>64</bit>
+                            <customFileName>geckodriver</customFileName>
+                            <version>0.29.1</version>
+                        </driver>
+                    </drivers>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
@@ -41,5 +77,4 @@
             <version>1.2.17</version>
         </dependency>
     </dependencies>
-
 </project>

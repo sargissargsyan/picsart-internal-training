@@ -17,7 +17,7 @@ public class DriverSetup {
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            System.setProperty("webdriver.chrome.driver", "/Users/ss/dev/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
             options = new ChromeOptions();
             List<String> arguments = new ArrayList<>();
             arguments.add("--disable-notifications");
