@@ -1,4 +1,3 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -40,7 +39,7 @@ public class EditorPage extends BasePage {
     }
 
     public int getItemsCount() {
-//        WaitHelper.getInstance().waitForElementToBeDisplayed(editorItems.get(0));
+        WaitHelper.getInstance().waitForElementToBeDisplayed(editorItems.get(0));
         return editorItems.size();
 
     }
